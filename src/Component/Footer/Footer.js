@@ -128,13 +128,28 @@ const Footer = () => {
               >
                 <h4 className="text-lg font-semibold mb-6">Company</h4>
                 <ul className="space-y-3">
-                  {footerLinks.company.map((link, index) => (
-                    <li key={index}>
-                      <a href="#" className="text-gray-400 hover:text-primary-400 transition-colors text-sm">
-                        {link}
-                      </a>
-                    </li>
-                  ))}
+                  {footerLinks.company.map((link, index) => {
+                    // Map footer links to appropriate sections or external URLs
+                    const linkMap = {
+                      'About Us': '#aboutme',
+                      'Our Team': '#team',
+                      'Careers': '#contact',
+                      'Contact': '#contact',
+                      'Privacy Policy': '/privacy',
+                      'Terms of Service': '/terms'
+                    };
+
+                    return (
+                      <li key={index}>
+                        <a
+                          href={linkMap[link] || '#contact'}
+                          className="text-gray-400 hover:text-primary-400 transition-colors text-sm"
+                        >
+                          {link}
+                        </a>
+                      </li>
+                    );
+                  })}
                 </ul>
               </motion.div>
             </div>
@@ -149,13 +164,30 @@ const Footer = () => {
               >
                 <h4 className="text-lg font-semibold mb-6">Resources</h4>
                 <ul className="space-y-3">
-                  {footerLinks.resources.map((link, index) => (
-                    <li key={index}>
-                      <a href="#" className="text-gray-400 hover:text-primary-400 transition-colors text-sm">
-                        {link}
-                      </a>
-                    </li>
-                  ))}
+                  {footerLinks.resources.map((link, index) => {
+                    // Map resource links to appropriate sections or external URLs
+                    const linkMap = {
+                      'Blog': '/blog',
+                      'Documentation': '/docs',
+                      'Case Studies': '#portfolio',
+                      'White Papers': '/resources',
+                      'API Reference': '/api-docs',
+                      'Support': '#contact',
+                      'Help Center': '/help',
+                      'Community': '/community'
+                    };
+
+                    return (
+                      <li key={index}>
+                        <a
+                          href={linkMap[link] || '/resources'}
+                          className="text-gray-400 hover:text-primary-400 transition-colors text-sm"
+                        >
+                          {link}
+                        </a>
+                      </li>
+                    );
+                  })}
                 </ul>
               </motion.div>
             </div>
